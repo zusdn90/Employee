@@ -1,0 +1,21 @@
+2015-11-10 14:29:33,540  INFO [com.hybrid.mapper.MemberMapperTest] id = 1
+2015-11-10 14:29:33,540  INFO [com.hybrid.mapper.MemberMapperTest] email = xxx@yyy
+2015-11-10 14:29:33,540  INFO [com.hybrid.mapper.MemberMapperTest] name = 홍길동
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] password = 1234
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] register_date = null
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] id = 2
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] email = xxx@yyy
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] name = 홍길동
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] password = 1234
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] register_date = null
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] id = 3
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] email = xxx@yyy
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] name = 홍길동
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] password = 1234
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] register_date = 2015-11-11
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] id = 4
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] email = xxx@yyy
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] name = 홍길동
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] password = 1234
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] register_date = 2015-11-11
+2015-11-10 14:29:33,541  INFO [com.hybrid.mapper.MemberMapperTest] Program exit...
