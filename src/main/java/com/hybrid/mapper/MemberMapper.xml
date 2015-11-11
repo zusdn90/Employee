@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hybrid.mapper.MemberMapper">
 	
-	<select id="selectALll">
+	<select id="selectAll" resultType="com.hybrid.model.Member">
 		select id,
 			   email,
 			   name,
@@ -11,17 +11,17 @@
 		  from member   
 	</select>
 	
-	<insert id="">
+	<insert id="insert">
 	    
 	    
 	</insert>
 	
-	<update id="">
+	<update id="update">
 	    
 	    
 	</update>
 	
-	<delete id="">
+	<delete id="delete">
 	    
 	    
 	</delete>
