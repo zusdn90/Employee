@@ -28,6 +28,7 @@ public class CityMapperTest {
 				@Override
 				public void accept(City t) {
 					log.info("name = " + t.getName());
+					log.info("id = "+t.getId());
 				}
 			}
 					);
