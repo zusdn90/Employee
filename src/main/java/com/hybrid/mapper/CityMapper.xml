@@ -20,5 +20,24 @@
 		 where countrycode = #{counrtycode}
 	</select>
 	
+	<insert id="insert" parameterType="com.hybrid.model.City">
+	    insert into city 
+		(
+			id,
+			name,
+			countryCode,
+			district,
+			population
+		)
+		values
+		(
+			#{id},
+			#{name},
+			#{countryCode},
+			#{district},
+			#{population}
+		)
+	</insert>
+	
 		
 </mapper>

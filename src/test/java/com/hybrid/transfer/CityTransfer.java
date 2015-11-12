@@ -17,21 +17,25 @@ public class CityTransfer {
 	
 	public static void main(String[] args) {
 		GenericApplicationContext ctx = null;
-		ctx = new GenericXmlApplicationContext("spring/beans_mysql.xml","spring/beans_oracle.xml");
+		ctx = new GenericXmlApplicationContext("spring/beans_mysql.xml",
+												"spring/beans_oracle.xml");
 		
 		CityMapper mysqlCityMapper = (CityMapper) ctx.getBean("mysqlCityMapper");
-	//	CityMapper oracleCityMapper = (CityMapper) ctx.getBean("oracleCityMapper");
+		CityMapper oracleCityMapper = (CityMapper) ctx.getBean("oracleCityMapper");
 		
 		List<City> list = mysqlCityMapper.selectAll();
 		
 		log.info("city size = " + list.size());
 		
+		System.out.println();
 		list.forEach(new Consumer<City>()
 				{
 
 					@Override
 					public void accept(City t) {
-				//		oracleCityMapper.insert(t);
+						System.out.println(".");
+						System.out.flush();
+						oracleCityMapper.insert(t);
 					}
 				}
 				);
