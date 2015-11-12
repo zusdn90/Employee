@@ -1,5 +1,7 @@
 drop table member;
-
+--
+--	Member table
+--	DDL(Data Definition Language)
 create table member (
 	id int auto_increment,
 	email varchar(255),
@@ -10,7 +12,7 @@ create table member (
 );
 --
 --	Member CRUD (Create, Read, Update, Delete)
-
+-- 	DML(Data Manipulation Language)
 --	Create
 insert into member (email,name,password,register_date) values ('xxx@yyy','홍길동','1234','2015/11/11')
 
