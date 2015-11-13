@@ -68,3 +68,28 @@ values
 	'KOR',
 	'Asia',
 	99998)
+
+--
+-- inner join
+-- left outer join
+-- right outer join
+--	
+select 
+      	d.deptno as dept_deptno,
+      	d.dname as dept_dname,
+      	d.loc as dept_loc,
+      	e.empno as emp_empno,
+      	e.ename as emp_ename,
+      	e.job as emp_job
+  from  emp e inner join dept d
+   	on 	e.deptno = d.deptno
+   
+select 
+      	d.deptno as dept_deptno,
+      	d.dname as dept_dname,
+      	d.loc as dept_loc,
+      	e.empno as emp_empno,
+     	e.ename as emp_ename,
+      	e.job as emp_job
+ from 	emp e left outer join dept d
+   on 	e.deptno = d.deptno
