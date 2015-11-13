@@ -30,12 +30,11 @@ public class CityTransfer {
 		System.out.println();
 		list.forEach(new Consumer<City>()
 				{
-
 					@Override
 					public void accept(City t) {
 						System.out.println(".");
 						System.out.flush();
-						oracleCityMapper.insert(t);
+						int rtn = oracleCityMapper.insert(t);
 					}
 				}
 				);

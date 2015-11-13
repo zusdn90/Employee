@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hybrid.mapper.DeptMapper">
+	
+	
+	<sql id="deptFrom">
+		select deptno,
+	    	   dname,
+	    	   loc
+	      from dept
+	</sql>
+	
+	
+	<select id="selectAll" resultType="com.hybrid.model.Dept">
+	   <include refid="deptFrom"/>
+	</select>
+	
+	<select id="selectByDeptno" resultType="com.hybrid.model.Dept" parameterType="int">
+	<include refid="deptFrom"/>
+	    where deptno = #{deptno}
+	</select>
+
+	<select id="selectAllWithEmps">
+	    
+	</select>
+	
+		<select id="selectByDeptnoWIthEmps">
+	    
+	</select>
+		
+</mapper>

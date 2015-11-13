@@ -24,5 +24,10 @@
 	<property name="mapperInterface" value="com.hybrid.mapper.CityMapper"></property>
 </bean>
 
+<bean id="oracleDeptMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<property name="sqlSessionTemplate" ref="oracleSqlSession"/>
+	<property name="mapperInterface" value="com.hybrid.mapper.DeptMapper"></property>
+</bean>
+
 
 </beans>

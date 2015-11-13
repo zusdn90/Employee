@@ -93,4 +93,6 @@ select
       	e.job as emp_job
  from 	emp e left outer join dept d
    on 	e.deptno = d.deptno
+   
+ select * from emp;
     
