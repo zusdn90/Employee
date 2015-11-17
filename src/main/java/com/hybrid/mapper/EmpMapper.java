@@ -10,5 +10,5 @@ public interface EmpMapper {
 	List<Emp> selectAllWithDept();
 	
 	Emp selectByEmpno(int empno);
-	Emp selectByEmpnoWIthDept(int empno);
+	Emp selectByEmpnoWithDept(int empno);
 }

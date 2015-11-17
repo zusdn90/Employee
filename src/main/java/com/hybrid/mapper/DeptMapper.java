@@ -10,8 +10,9 @@ public interface DeptMapper {
 	List<Dept> selectAllWithEmps();
 	
 	Dept selectByDeptno(int deptno);
-	Dept selectByDeptnoWIthEmps(int deptno);
+	Dept selectByDeptnoWithEmps(int deptno);
 	
+	int insert(Dept dept);
 	
 	
 }

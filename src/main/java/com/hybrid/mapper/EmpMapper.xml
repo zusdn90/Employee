@@ -30,7 +30,7 @@
 	        <id property="deptno" 		column="dept_deptno"/>
 	        <result property="dname" 	column="dept_dname"/>
 	        <result property="loc"		column="dept_loc"/>
-	    <association property="emp" resultMap="EmpResultMap"/>
+	    <association property="emps" resultMap="empResultMap"/>
 	    </collection>
 	</resultMap>
 	
@@ -47,7 +47,7 @@
 	      	on e.deptno = d.deptno
 	</select>
 	
-	<select id="selectByEmpnoWIthDept">
+	<select id="selectByEmpnoWithDept">
 	    
 	</select>
 

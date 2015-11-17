@@ -70,12 +70,23 @@
 		<include refid="deptFromWithEmp" />
 	</select>
 
-	<select id="selectByDeptnoWIthEmps" resultMap="deptResultMap">
+	<select id="selectByDeptnoWithEmps" resultMap="deptResultMap">
 		<include refid="deptFromWithEmp" />
 		where d.deptno = #{deptno}
 	</select>
-
 	
-	
-	
+	<insert id="insert" parameterType="com.hybrid.model.Dept">
+		insert into dept	    
+	    (
+	    	deptno,
+	    	dname,
+	    	loc
+	    )
+	    values
+	    (
+	    	#{deptno},
+	    	#{dname},
+	    	#{loc}
+	    )
+	</insert>
 </mapper>

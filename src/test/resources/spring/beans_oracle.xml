@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!-- oracle DataSource -->
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+	<!-- oracle DataSource -->
 
-<bean  id="oracleDataSource" class="org.apache.commons.dbcp.BasicDataSource">
-	<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-	<property name="username" value="spring"/>
-	<property name="password" value="tiger"/>
-</bean>
+	<bean id="oracleDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="spring" />
+		<property name="password" value="tiger" />
+	</bean>
 
-<bean id="oracleSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="dataSource" ref="oracleDataSource"/>
-</bean>
+	<bean id="oracleSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="oracleDataSource" />
+	</bean>
 
-<bean id="oracleSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-	<constructor-arg ref="oracleSqlSessionFactory"/>
-</bean>
+	<bean id="oracleSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="oracleSqlSessionFactory" />
+	</bean>
 
-<bean id="oracleCityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-	<property name="sqlSessionTemplate" ref="oracleSqlSession"/>
-	<property name="mapperInterface" value="com.hybrid.mapper.CityMapper"></property>
-</bean>
+	<bean id="oracleCityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="oracleSqlSession" />
+		<property name="mapperInterface" value="com.hybrid.mapper.CityMapper"></property>
+	</bean>
 
-<bean id="oracleDeptMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-	<property name="sqlSessionTemplate" ref="oracleSqlSession"/>
-	<property name="mapperInterface" value="com.hybrid.mapper.DeptMapper"></property>
-</bean>
+	<bean id="oracleDeptMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="oracleSqlSession" />
+		<property name="mapperInterface" value="com.hybrid.mapper.DeptMapper"></property>
+	</bean>
 
-<bean id="oracleEmpMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-	<property name="sqlSessionTemplate" ref="oracleSqlSession"/>
-	<property name="mapperInterface" value="com.hybrid.mapper.EmpMapper"></property>
-</bean>
-
-
+	<bean id="oracleEmpMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="oracleSqlSession" />
+		<property name="mapperInterface" value="com.hybrid.mapper.EmpMapper"></property>
+	</bean>
+	<bean class="com.hybrid.dao.DeptDao" id="oracleDeptdao">
+		<property name="deptMapper" ref="oracleDeptMapper"></property>
+	</bean>
+	<aop:aspectj-autoproxy />
+	<bean class="com.hybrid.aspect.LogDaoAspect"/>
+	<bean class="com.hybrid.aspect.TransactionAspect"/>
+	
+	<bean class="com.hybrid.service.DeptRegisterService">
+		<property name="deptDao" ref="oracleDeptdao"/>
+		<property name="dataSource" ref="oracleDataSource"></property>
+	</bean>	
+	
+	
 </beans>
