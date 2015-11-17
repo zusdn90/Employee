@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 객체 생성방법 중 NEW 생성 95% 사용-->
+<bean class="java.util.Date">
+<property name="year" value="115"/>
+<property name="month" value="08"/>
+<property name="date" value="10"/>
+</bean>
+
+<!-- NEW 생성 95% 생성-->
+<bean class="com.hybrid.model.Member">
+</bean>
+
+<!-- 객체 생성방법 중 factory method 생성 1% 사용-->
+<bean id="documentBuilderFactory" class="javax.xml.parsers.DocumentBuilderFactory" factory-method="newInstance">
+
+</bean>
+
+<!-- FactoryBean으로 객체 생성 3% 사용 -->
+<bean class="com.hybrid.bean.DocumentFactoryBean">
+	<constructor-arg ref="documentBuilderFactory"/>
+	<property name="path" value="com/hybrid/bean/dept.xml"></property>
+</bean>
+
+</beans>
