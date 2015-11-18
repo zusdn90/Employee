@@ -34,17 +34,50 @@
 		<property name="sqlSessionTemplate" ref="oracleSqlSession" />
 		<property name="mapperInterface" value="com.hybrid.mapper.EmpMapper"></property>
 	</bean>
+	
 	<bean class="com.hybrid.dao.DeptDao" id="oracleDeptdao">
 		<property name="deptMapper" ref="oracleDeptMapper"></property>
 	</bean>
+	
+	<bean id="oracleEmpDao" class="com.hybrid.dao.EmpDao">
+		<property name="empMapper" ref="oracleEmpMapper"></property>
+	
+	</bean>
+	
+	
 	<aop:aspectj-autoproxy />
 	<bean class="com.hybrid.aspect.LogDaoAspect"/>
 	<bean class="com.hybrid.aspect.TransactionAspect"/>
 	
 	<bean class="com.hybrid.service.DeptRegisterService">
 		<property name="deptDao" ref="oracleDeptdao"/>
+		<property name="empDao" ref="oracleEmpDao"/>
 		<property name="dataSource" ref="oracleDataSource"></property>
 	</bean>	
+	
+	
+	
+	<bean id="dept" class="com.hybrid.model.Dept">
+		<property name="deptno" value="80"/>
+		<property name="dname" value="총무부"/>
+		<property name="loc" value="서울"/>
+		<property name="emps">
+			<list> 
+				<bean  class="com.hybrid.model.Emp">
+					<property name="empno" value="300"/>
+					<property name="ename" value="홍길동"/>
+					<property name="dept" ref="dept"/>
+				</bean>
+				<bean  class="com.hybrid.model.Emp">
+					<property name="empno" value="400"/>
+					<property name="ename" value="홍길동"/>
+					<property name="dept" ref="dept"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
 	
 	
 </beans>

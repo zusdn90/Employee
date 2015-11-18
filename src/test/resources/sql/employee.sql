@@ -94,5 +94,10 @@ select
  from 	emp e left outer join dept d
    on 	e.deptno = d.deptno
    
+ select * from dept;
  select * from emp;
+ 
+ select * from dept d inner join emp e
+ 	on d.deptno = e.deptno
+ 	where d.deptno = 80;
     

@@ -1,11 +1,16 @@
 package com.hybrid.service;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.hybrid.model.Dept;
+import com.hybrid.model.Emp;
 
 public class DeptRegisterServiceTest {
 
@@ -18,10 +23,7 @@ public class DeptRegisterServiceTest {
 		
 		DeptRegisterService service = ctx.getBean(DeptRegisterService.class);
 	
-		Dept dept = new Dept();
-		dept.setDeptno(60);
-		dept.setDname("총무부");
-		dept.setLoc("seoul");
+		Dept dept = ctx.getBean(Dept.class);
 		
 		service.regist(dept);
 	}
