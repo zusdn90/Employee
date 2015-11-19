@@ -59,3 +59,13 @@ select id,
     on c.countrycode = t.code
  where t.code = 'KOR'
 	
+--start, length
+-- limit 시작은 0부터 시작
+ select id,
+ 		name,
+ 		countrycode,
+ 		district,
+ 		population
+   from city
+  order by countrycode asc, name asc
+  limit 40, 10

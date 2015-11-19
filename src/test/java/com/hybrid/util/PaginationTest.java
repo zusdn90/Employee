@@ -1,10 +1,25 @@
 package com.hybrid.util;
 
+import java.util.List;
 import java.util.Scanner;
+
+import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+import com.hybrid.mapper.CityMapper;
+import com.hybrid.model.City;
 
 public class PaginationTest {
 
 	public static void main(String[] args) {
+		GenericApplicationContext ctx = null;
+		ctx = new GenericXmlApplicationContext("spring/beans_mysql.xml");
+		
+		CityMapper cityMapper = ctx.getBean(CityMapper.class);
+		int totalItem = cityMapper.selectCount();
+		System.out.println("totalItem = " + totalItem);
+		
+		
 		Pagination paging = new Pagination();
 		Scanner sc = new Scanner(System.in);
 		
@@ -12,12 +27,22 @@ public class PaginationTest {
 			
 		System.out.println("pageNo = ");	
 		int pageNo = sc.nextInt();
+		
 		paging.setPageNo(pageNo);
-		paging.setTotalItem(4076);
+		paging.setTotalItem(totalItem);
+		System.out.println(paging.getLength());
+		List<City> list = cityMapper.selectPage(paging);
 		
+//		for(int i=0; i<paging.getLength();i++)
+//		{
+//			City c = list.get(i);
 		
-		for(int i=paging.getFirstItem();i<=paging.getLastItem();i++)
-			System.out.println("item index = " + i);
+		for(int i=paging.getFirstItem(); i<paging.getLastItem();i++)
+		{
+			City c = list.get(i - paging.getFirstItem());
+			String line = c.getId()+ " "+ c.getName() + " " + c.getCountryCode();
+			System.out.println(line);
+		}
 		
 		if(!paging.isFirstGroup())
 			System.out.printf("[이전] ");
@@ -37,8 +62,6 @@ public class PaginationTest {
 		System.out.println();
 		}		
 	}
-	
-	
 	
 	static void test1()
 	{

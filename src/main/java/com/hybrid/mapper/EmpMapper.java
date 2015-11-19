@@ -7,10 +7,14 @@ import com.hybrid.model.Emp;
 
 public interface EmpMapper {
 	List<Emp> selectAll();
-	List<Emp> selectAllWithDept();
-	
 	Emp selectByEmpno(int empno);
+	List<Emp> selectByDeptno(int deptno);
+	
+
+	List<Emp> selectAllWithDept();
+	List<Emp> selectAllWithDeptno();
 	Emp selectByEmpnoWithDept(int empno);
 	
 	int insert(Emp emp);
+	int delete(Emp emp);
 }

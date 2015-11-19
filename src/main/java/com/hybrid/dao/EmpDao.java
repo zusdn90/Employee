@@ -27,6 +27,12 @@ public class EmpDao {
 	{
 		return empMapper.selectByEmpno(empno);
 	}
+	
+	public List<Emp> selectByDeptno(int deptno)
+	{
+		return empMapper.selectByDeptno(deptno);
+	}
+	
 	public List<Emp> selectAllWithDept()
 	{
 		return empMapper.selectAllWithDept();
@@ -39,6 +45,11 @@ public class EmpDao {
 	public int insert(Emp emp)
 	{
 		return empMapper.insert(emp);
+	}
+	
+	public int delete(Emp emp)
+	{
+		return empMapper.delete(emp);
 	}
 	
 }

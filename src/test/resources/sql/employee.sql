@@ -90,7 +90,7 @@ select
       	d.loc as dept_loc,
       	e.empno as emp_empno,
      	e.ename as emp_ename,
-      	e.job as emp_job
+      	e.job as emp_job 
  from 	emp e left outer join dept d
    on 	e.deptno = d.deptno
    
@@ -99,5 +99,5 @@ select
  
  select * from dept d inner join emp e
  	on d.deptno = e.deptno
- 	where d.deptno = 80;
+ 	where d.deptno = 81;
     
