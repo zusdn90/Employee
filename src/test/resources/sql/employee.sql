@@ -101,3 +101,23 @@ select
  	on d.deptno = e.deptno
  	where d.deptno = 81;
     
+ select count(*) from city
+ select * from CITY
+ 
+ select *
+   from city
+  order by countrycode asc, name asc 
+  
+  
+  select outer.*
+    from ( select rownum r, inner.*
+    		 from ( select *
+    		 		  from city 
+    		 		  order by countrycode asc, name asc
+    		 	   )inner	
+    	  ) outer
+  	where outer.r >= 21
+ 	and	outer.r <= 30
+  	
+ 
+ delete from city

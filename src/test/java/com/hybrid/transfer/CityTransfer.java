@@ -10,6 +10,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.hybrid.mapper.CityMapper;
 import com.hybrid.model.City;
+import com.hybrid.util.Pagination;
 
 public class CityTransfer {
 	
@@ -23,7 +24,13 @@ public class CityTransfer {
 		CityMapper mysqlCityMapper = (CityMapper) ctx.getBean("mysqlCityMapper");
 		CityMapper oracleCityMapper = (CityMapper) ctx.getBean("oracleCityMapper");
 		
+		oracleCityMapper.deleteAll();
+		
 		List<City> list = mysqlCityMapper.selectAll();
+//		Pagination paging = new Pagination();
+//		paging.setTotalItem(4079);
+//		paging.setPageNo(2);
+//		List<City> list = mysqlCityMapper.selectPage(paging);
 		
 		log.info("city size = " + list.size());
 		
@@ -35,6 +42,7 @@ public class CityTransfer {
 						System.out.println(".");
 						System.out.flush();
 						int rtn = oracleCityMapper.insert(t);
+						log.info("rtn = " + rtn);
 					}
 				}
 				);

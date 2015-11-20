@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hybrid.dao.DeptDao;
 import com.hybrid.dao.EmpDao;
@@ -28,7 +29,8 @@ public class DeptRegisterService {
 	public void setDataSource(DataSource ds) {
 		this.dataSource = ds;
 	}
-
+	
+	@Transactional
 	public void regist(Dept dept) {
 
 		deptDao.insert(dept);

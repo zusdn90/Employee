@@ -15,7 +15,10 @@
   		  from city
 	</select>    
 	
-	<select id="selectPage" resultType="com.hybrid.model.City" parameterType="com.hybrid.util.Pagination">
+	<select id="selectPage" 
+	   		resultType="com.hybrid.model.City"
+	     	parameterType="com.hybrid.util.Pagination"
+	     	databaseId="mysql">
 	    select id,
 	  		   name,
 	  		   countrycode,
@@ -24,6 +27,21 @@
   		  from city
   		  order by countrycode asc, name asc
   		 limit #{start}, #{length} 
+	</select>    
+	
+	<select id="selectPage" 
+	    	resultType="com.hybrid.model.City" 
+	    	parameterType="com.hybrid.util.Pagination"
+	   		databaseId="oracle">
+	      select outer.*
+   			from ( select rownum r, inner.*
+    		 		 from ( select *
+    		 		  		  from city 
+    		 		 	 		order by countrycode asc, name asc
+    		 	  			 )inner	
+    	 		 ) outer
+  		where outer.r &gt;= #{firstItem}
+ 		and	outer.r &lt;= #{lastItem}
 	</select>    
 	
 	<select id="selectByCountryCode" parameterType="String" resultType="com.hybrid.model.City">
@@ -54,5 +72,9 @@
 			#{population}
 		)
 	</insert>
+	
+	<delete id="deleteAll">
+	    delete from city
+	</delete>
 	
 </mapper>

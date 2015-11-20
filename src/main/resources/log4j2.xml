@@ -14,10 +14,13 @@
  
 	<!-- Logger 설정 -->
 	<Loggers>
-		<Root level="INFO">
+		<Root level="DEBUG">
 		<AppenderRef ref="console"/>
 		<AppenderRef ref="MyFile"/>
 		</Root>
+		<Logger name="org.springframework.jdbc.datasource" level="DEBUG">
+      </Logger>
+		<Logger name="org.hybrid.mapper" level="DEBUG">
+      </Logger>
 	</Loggers>
- 
 </Configuration>

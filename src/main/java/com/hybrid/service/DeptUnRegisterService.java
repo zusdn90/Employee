@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hybrid.dao.DeptDao;
 import com.hybrid.dao.EmpDao;
@@ -37,7 +38,8 @@ public class DeptUnRegisterService {
 	{
 		this.dataSource = dataSource;
 	}
-
+	
+	@Transactional
 	public void unregist(Dept dept)
 	{
 		List<Emp> emps = empDao.selectByDeptno(dept.getDeptno());
@@ -48,7 +50,7 @@ public class DeptUnRegisterService {
 		}
 		deptDao.delete(dept);
 	}
-	
+	@Transactional
 	public void unregist(int deptno)
 	{
 		List<Dept> depts = deptDao.selectGreaterThan(deptno);
