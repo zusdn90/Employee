@@ -12,26 +12,26 @@ import com.hybrid.mapper.CityMapper;
 import com.hybrid.model.City;
 import com.hybrid.util.Pagination;
 
-public class CityTransfer {
+public class CityTransferOracle {
 	
-	static Log log = LogFactory.getLog(CityTransfer.class);
+	static Log log = LogFactory.getLog(CityTransferOracle.class);
 	
 	public static void main(String[] args) {
 		GenericApplicationContext ctx = null;
 		ctx = new GenericXmlApplicationContext("spring/beans_mysql.xml",
 												"spring/beans_oracle.xml");
-		/*
-		 * Mysql ==> Oracle
-		 */
 		
+		/*
+		 * Oracle ==> MySQL
+		 */
 		
 		CityMapper mysqlCityMapper = (CityMapper) ctx.getBean("mysqlCityMapper");
 		CityMapper oracleCityMapper = (CityMapper) ctx.getBean("oracleCityMapper");
 		
-		int deleteCount = oracleCityMapper.deleteAll();
-		log.info("Oracle City Delete Count  = "+deleteCount);
+		int deleteCount = mysqlCityMapper.deleteAll();
+		log.info("Mysql City Delete Count  = "+deleteCount);
 		
-		List<City> list = mysqlCityMapper.selectAll();
+		List<City> list = oracleCityMapper.selectAll();
 //		Pagination paging = new Pagination();
 //		paging.setTotalItem(4079);
 //		paging.setPageNo(2);
@@ -46,14 +46,18 @@ public class CityTransfer {
 					public void accept(City t) {
 						System.out.println(".");
 						System.out.flush();
-						int rtn = oracleCityMapper.insert(t);
+						
+						if(t.getDistrict() == null)
+							t.setDistrict("");
+						
+						int rtn = mysqlCityMapper.insert(t);
 						log.info("rtn = " + rtn);
 					}
 				}
 				);
 		
-		int cityCount = oracleCityMapper.selectCount();
-		log.info("Oracle City Total Count = "+cityCount);
+		int cityCount = mysqlCityMapper.selectCount();
+		log.info("Mysql City Total Count = "+cityCount);
 		ctx.close();
 		
 		List<String> xx;

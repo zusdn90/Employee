@@ -12,6 +12,15 @@ public class Emp {
 	private Float comm;
 	private int deptno;
 	private Dept dept; // Has-One
+	
+	public int getDeptno() {
+		return deptno;
+	}
+
+	public void setDeptno(int deptno) {
+		this.deptno = deptno;
+	}
+
 
 	public int getEmpno() {
 		return empno;
@@ -67,14 +76,6 @@ public class Emp {
 
 	public void setComm(Float comm) {
 		this.comm = comm;
-	}
-
-	public int getDeptno() {
-		return deptno;
-	}
-
-	public void setDeptno(int deptno) {
-		this.deptno = deptno;
 	}
 
 	public Dept getDept() {

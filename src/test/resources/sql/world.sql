@@ -69,3 +69,8 @@ select id,
    from city
   order by countrycode asc, name asc
   limit 40, 10
+  
+  select count(*) from city
+  select * from city
+  delete from city
+  alter table city modify countrycode char(100)

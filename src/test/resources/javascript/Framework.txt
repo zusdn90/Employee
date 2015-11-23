@@ -1,0 +1,12 @@
+#
+#	javascript Framework
+#
+Cross-Brower 대응
+
+1.jQuery	==> jQuery Mobile
+
+2.Extjs		==> Sencha Touch
+
+3.Angularjs ==> MVC Framework 하나의페이지를 가지고 모든기능을 수행 SPAs(Single page Applications)
+
+4.Bootstrap ==> RWD(반응형 웹)

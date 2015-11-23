@@ -121,3 +121,26 @@ select
   	
  
  delete from city
+ /*
+  *	Country 
+  */
+ create table country (
+  	code 				char(3), 
+    name 				char(52),
+  	continent			char(50),
+    regio 				char(26), 
+    surfacearea 		numeric(10,2),
+    indepyear 			numeric(6),
+    population 			numeric(11),
+    lifeexpectancy 		numeric(3,1),
+    gnp 				numeric(10,2),
+    gnpold 				numeric(10,2),
+    localname 			char(45),
+    governmentform 		char(45),
+    headofstate 		char(60),
+    capital 			numeric(11),
+    code2 				char(2),
+    constraint pk_country_code primary key (code)
+) 
+
+select * from country
