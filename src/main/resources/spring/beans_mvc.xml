@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:context="http://www.springframework.org/schema/context"
-   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-      
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+<mvc:default-servlet-handler/>
+
+<context:component-scan base-package="com.hybrid.controller"/> <!-- 패키지이하에 있는 모든  bean등록을 해준다.-->
+
+<mvc:annotation-driven/> <!-- annotation기반으로 설정 및 동작 -->
+
+<mvc:view-resolvers>
+	 <mvc:jsp prefix="/WEB-INF/view/" suffix=".jsp"/>		
+</mvc:view-resolvers>
+				
+<!-- 정적Contents -->
+<mvc:view-controller path="/index.html" view-name="index"/> <!-- index.html을 호출하지만 실제로는 index.jsp가 호출된다. 유연성,보안적인 측면 -->
+
+<mvc:resources location="/WEB-INF/css/" mapping="/css/**" cache-period="0"/>
+<mvc:resources location="/WEB-INF/js/" mapping="/js/**" cache-period="0"/>
+<mvc:resources location="/WEB-INF/img/" mapping="/img/**" cache-period="0"/>
+
+<mvc:resources location="/WEB-INF/node_modules/angular/" mapping="/angular/**"/>
+<mvc:resources location="/WEB-INF/node_modules/bootstrap/" mapping="/bootstrap/**"/>
+<mvc:resources location="/WEB-INF/node_modules/jquery/" mapping="/jquery/**"/>
+
 
 
 </beans>
+

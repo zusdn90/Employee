@@ -10,3 +10,26 @@ Cross-Brower 대응
 3.Angularjs ==> MVC Framework 하나의페이지를 가지고 모든기능을 수행 SPAs(Single page Applications)
 
 4.Bootstrap ==> RWD(반응형 웹)
+
+#
+# URL 매핑
+#
+
+http://localhost:8080/Employee/WEB-INF/css/css.html
+http://localhost:8080/Employee/css/css.html
+
+우선순위
+1. 정확한매핑
+	/xxx
+	/city
+	/dept/register
+	
+2. 경로매핑
+	ex) /xxx/yyy/*
+	             
+3. 확장자매핑
+	ex) *.jsp
+	ex) *.do
+	
+4. Default 매핑
+	ex) / 
