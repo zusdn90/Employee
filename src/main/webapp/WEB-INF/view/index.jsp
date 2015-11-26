@@ -10,17 +10,7 @@
 <meta charset="UTF-8">
 <title>index.jsp</title>
 
-<!-- 서버에서 동작 -->
-<c:url var="bootstrap" value="/bootstrap/dist/css/bootstrap.css"/>
-<c:url var="jquery" value="/jquery/dist/jquery.js"/>
-<c:url var="angular" value="/angular/angular.js"/>
-
-<!-- URL경로 설정 -->
-<link rel="stylesheet" href="${bootstrap}"/>
-<script type="text/javascript" src="${jquery}"></script>
-<script type="text/javascript" src="${angular}"></script>
-
-
+<%@include file="/WEB-INF/view/common.jspf" %>
 
 <style type="text/css">
 	
@@ -41,7 +31,7 @@
 
 </style>
 <script type="text/javascript">
-$(document).ready(function(){ //document가 다 읽혀졌을때 ready함수를 실행 
+$(document).ready(function(){ 		//document가 다 읽혀졌을때 ready함수를 실행 
 	
 	$('li > a').click(function(){
 		$('ul > li').removeClass('active');

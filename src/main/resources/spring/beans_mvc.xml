@@ -9,7 +9,8 @@
 
 <mvc:default-servlet-handler/>
 
-<context:component-scan base-package="com.hybrid.controller"/> <!-- 패키지이하에 있는 모든  bean등록을 해준다.-->
+<context:component-scan base-package="com.hybrid.controller"/> 
+<!-- 패키지이하에 있는 어노테이션이 controller인 것을 찾아서 자동으로 bean등록을 해준다.-->
 
 <mvc:annotation-driven/> <!-- annotation기반으로 설정 및 동작 -->
 
@@ -18,7 +19,8 @@
 </mvc:view-resolvers>
 				
 <!-- 정적Contents -->
-<mvc:view-controller path="/index.html" view-name="index"/> <!-- index.html을 호출하지만 실제로는 index.jsp가 호출된다. 유연성,보안적인 측면 -->
+<mvc:view-controller path="/index.html" view-name="index"/> <!-- Controller를 거치지 않고 Mapping -->
+<!-- index.html을 호출하지만 실제로는 index.jsp가 호출된다. 유연성,보안적인 측면 -->
 
 <mvc:resources location="/WEB-INF/css/" mapping="/css/**" cache-period="0"/>
 <mvc:resources location="/WEB-INF/js/" mapping="/js/**" cache-period="0"/>
@@ -27,7 +29,6 @@
 <mvc:resources location="/WEB-INF/node_modules/angular/" mapping="/angular/**"/>
 <mvc:resources location="/WEB-INF/node_modules/bootstrap/" mapping="/bootstrap/**"/>
 <mvc:resources location="/WEB-INF/node_modules/jquery/" mapping="/jquery/**"/>
-
 
 
 </beans>

@@ -18,7 +18,7 @@ Cross-Brower 대응
 http://localhost:8080/Employee/WEB-INF/css/css.html
 http://localhost:8080/Employee/css/css.html
 
-우선순위
+우선순위(WAS입장)
 1. 정확한매핑
 	/xxx
 	/city
