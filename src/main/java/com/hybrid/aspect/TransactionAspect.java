@@ -14,26 +14,24 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 @Aspect
 public class TransactionAspect {
-
+	
 	static Log log = LogFactory.getLog(TransactionAspect.class);
+	
 	DataSource dataSource;
-
+	
 	public void setDataSource(DataSource ds) {
 		this.dataSource = ds;
 	}
 	
-	// 스프링의 Transaction 메카니즘
+	//스프링의 Transaction 매커니즘
 	@Around("execution(public * com.hybrid.service.*Service.*(..))")
 	public Object around(ProceedingJoinPoint pjp) throws Throwable {
-		// before
-		log.info("### before");
-
+		
 		DataSourceTransactionManager tm = new DataSourceTransactionManager(dataSource);
 		TransactionDefinition td = new DefaultTransactionDefinition();
 		TransactionStatus ts = tm.getTransaction(td);
 		log.info("### transaction start");
-		Object rtn = null;
-		
+		Object rtn=null;
 		try {
 			rtn = pjp.proceed();
 			tm.commit(ts);
@@ -45,6 +43,8 @@ public class TransactionAspect {
 		} finally {
 			
 		}
+		
 		return rtn;
 	}
+
 }

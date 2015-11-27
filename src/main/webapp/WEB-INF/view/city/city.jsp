@@ -11,32 +11,98 @@
 
 <%@include file="/WEB-INF/view/common.jspf"%>
 <title>city.jsp</title>
-<script type="text/javascript">
+<c:url var="url_all" value="/city"/>
+<c:url var="url_page" value="/city/page/"/>
+
+<script type="text/javascript">	//Model 부분 
 	var app = angular.module('employeeApp',[]);
-	app.controller('ListcityController', function($scope) {
-	//	alert("listController called ...");
+	app.controller('listcityController', function($scope, $http) {	//$http ==> ajax통신을 사용하기 위해
 		
-		$scope.result = 0;
+		var url_all = "${url_all}";
+		var url_page = "${url_page}";
 		
-		$scope.getData = function() {
-			$scope.result += 1;
+		$scope.pageNo = 1;
+		$scope.citys =[];
+		$scope.paging = {};
+		
+		$scope.selectPage = function() {
+			$http.get(url_page + $scope.pageNo).success(function(data, status, headers, config) {
+				console.dir(data);
+				$scope.citys = data.citys;
+				$scope.paging = data.paging;
+			//	alert('success...');
+			});		
 		};
-		$scope.clear = function() {
-			$scope.result += 0;
-		}
+		
+		$scope.selectPage();
+		
+		$scope.prevClick = function(pageNo) {
+			$scope.pageNo = pageNo
+			$scope.selectPage();
+	//		alert("pageNo = " + pageNo);
+		};
+		
+		$scope.pageClick = function(pageNo) {
+			$scope.pageNo = pageNo
+			$scope.selectPage();
+	//		alert("pageNo = " + pageNo);
+		};
+			
+		$scope.nextClick = function(pageNo) {
+			$scope.pageNo = pageNo
+			$scope.selectPage();
+//			alert("pageNo = " + pageNo);
+		};
+	
+
 	});
 </script>
 </head>
-<body data-ng-controller="ListcityController">
-	<h1>City List</h1>
+<body data-ng-controller="listcityController" class="container">
+<h1>City List</h1>
 
-	<button class="btn btn-primary" data-ng-click="getData()">GET</button>
-	<button class="btn btn-success" data-ng-click="clear()">Clear</button>
-	<hr>
-	<textarea id="result" rows="50" cols="50">{{result}}</textarea> <!-- data binding -->
-
-	<script type="text/javascript">
-		
-	</script>
+<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+	<div class="table-responsive">
+		<ul class="pagination">
+			<li><a href="#" data-ng-click="prevClick(paging.firstPage - 1)">Prev</a>
+			</li>
+			<li data-ng-repeat="page in paging">
+				<a href="#" data-ng-click="pageClick(paging.length+1)"></a>
+			</li>
+			<li><a href="#" data-ng-click="nextClick(paging.lastPage + 1)">Next</a></li>
+		</ul>
+		<table class="table table-striped table-hover">
+			<thead>
+				<th>Index</th><th>ID</th><th>Name</th><th>CountryCode</th><th>Population</th>
+			
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="city in citys">
+					<td>{{$index+1}}</td>
+					<td>{{city.id}}</td>	
+					<td>{{city.name}}</td>	
+					<td>{{city.countryCode}}</td>	
+					<td>{{city.district}}</td>	
+					<td>{{city.population}}</td>	
+				</tr>
+			</tbody>		
+		</table>
+		</div>
+	</div>
+	<div class="col-sm-2"></div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+	<div class="form-group">
+		<textarea rows="20" class="form-control">
+		{{citys}}
+		{{paging}}
+		</textarea>
+	</div>
+	</div>
+</div>
+	
 </body>
 </html>

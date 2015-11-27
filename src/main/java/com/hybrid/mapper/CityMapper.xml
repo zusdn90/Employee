@@ -1,66 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hybrid.mapper.CityMapper">
-    
     <select id="selectCount" resultType="int">
         select count(*) from city
     </select>
-	
-	<select id="selectAll" resultType="com.hybrid.model.City">
-	    select id,
-	  		   name,
-	  		   countrycode,
-	   		   district,
-	  		   population
-  		  from city
-	</select>    
-	
-	<select id="selectPage" 
-	   		resultType="com.hybrid.model.City"
-	     	parameterType="com.hybrid.util.Pagination"
-	     	databaseId="mysql">
-	    select id,
-	  		   name,
-	  		   countrycode,
-	   		   district,
-	  		   population
-  		  from city
-  		  order by countrycode asc, name asc
-  		 limit #{start}, #{length} 
-	</select>    
-	
-	<select id="selectPage" 
-	    	resultType="com.hybrid.model.City" 
-	    	parameterType="com.hybrid.util.Pagination"
-	   		databaseId="oracle">
-	      select outer.*
-   			from ( select rownum r, inner.*
-    		 		 from ( select *
-    		 		  		  from city 
-    		 		 	 		order by countrycode asc, name asc
-    		 	  			 )inner	
-    	 		 ) outer
-  		where outer.r &gt;= #{firstItem}
- 		and	outer.r &lt;= #{lastItem}
-	</select>    
-	
-	<select id="selectByCountryCode" parameterType="String" resultType="com.hybrid.model.City">
-	    select id,
+    <select id="selectAll" resultType="com.hybrid.model.City">
+        select id,
 			   name,
 			   countrycode,
 			   district,
 			   population
 		  from city
-		 where countrycode = #{counrtycode}
-	</select>
-	
-	<insert id="insert" parameterType="com.hybrid.model.City">
-	    insert into city 
+    </select>
+    <select id="selectPage" 
+        	parameterType="com.hybrid.util.Pagination" 
+        	resultType="com.hybrid.model.City"
+        	databaseId="mysql">
+        select id,
+			   name,
+			   countrycode,
+			   district,
+			   population
+		  from city
+		 order by countrycode asc, name asc 
+		 limit #{start}, #{length} 
+    </select>
+    <select id="selectPage" 
+        	parameterType="com.hybrid.util.Pagination" 
+        	resultType="com.hybrid.model.City"
+        	databaseId="oracle">
+        select outer.*
+		  from ( select rownum r, inner.*
+		  		   from ( select *
+		  		   			from city 
+		  		   		   order by countrycode asc, name asc
+		  		        ) inner
+		  	   ) outer
+		 where outer.r &gt;= #{firstItem}
+		   and outer.r &lt;= #{lastItem}
+    </select>
+    
+    
+    <select id="selectByCountryCode" parameterType="string" resultType="com.hybrid.model.City">
+        select id,
+			   name,
+			   countrycode,
+			   district,
+			   population
+		  from city
+		 where countrycode = #{countryCode}
+    </select>
+    <insert id="insert" parameterType="com.hybrid.model.City">
+        insert into city
 		(
-			id,
-			name,
-			countryCode,
-			district,
+			id, 
+			name, 
+			countrycode, 
+			district, 
 			population
 		)
 		values
@@ -71,10 +67,12 @@
 			#{district},
 			#{population}
 		)
-	</insert>
-	
-	<delete id="deleteAll">
-	    delete from city
-	</delete>
-	
+    </insert>
+    <delete id="deleteAll">
+        delete from city
+    </delete>
+    
+    
+    
+    
 </mapper>

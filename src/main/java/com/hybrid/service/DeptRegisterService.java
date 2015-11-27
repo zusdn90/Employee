@@ -37,7 +37,7 @@ public class DeptRegisterService {
 
 		List<Emp> emps = dept.getEmps();
 		
-		if (emps != null)
+		if(emps != null)
 			for (Emp e : emps) {
 				empDao.insert(e);
 			}
