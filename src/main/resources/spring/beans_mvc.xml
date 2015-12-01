@@ -9,8 +9,8 @@
 
 <mvc:default-servlet-handler/>
 
-<!-- <context:component-scan base-package="com.hybrid.controller"/>  -->
-<!-- 패키지이하에 있는 어노테이션이 controller인 것을 찾아서 자동으로 bean등록을 해준다.-->
+<context:component-scan base-package="com.hybrid.controller"/> 
+<!-- 패키지이하에 있는 어노테이션이 controller인 것을 찾아서 자동으로 bean등록을 해준다. -->
 
 <mvc:annotation-driven/> <!-- annotation기반으로 설정 및 동작 -->
 
@@ -27,13 +27,14 @@
 <mvc:resources location="/WEB-INF/img/" mapping="/img/**" cache-period="0"/>
 
 <mvc:resources location="/WEB-INF/node_modules/angular/" mapping="/angular/**"/>
+<mvc:resources location="/WEB-INF/node_modules/angular-route/" mapping="/angular-route/**"/>
+<mvc:resources location="/WEB-INF/node_modules/angular-animate/" mapping="/angular-animate/**"/>
+<mvc:resources location="/WEB-INF/node_modules/angular-touch/" mapping="/angular-touch/**"/>
+<mvc:resources location="/WEB-INF/node_modules/angular-loading-bar/" mapping="/angular-loading-bar/**"/>
+
 <mvc:resources location="/WEB-INF/node_modules/bootstrap/" mapping="/bootstrap/**"/>
 <mvc:resources location="/WEB-INF/node_modules/jquery/" mapping="/jquery/**"/>
 
-<bean class="com.hybrid.controller.CityController">
-	<property name="cityListService" ref="cityListService"/>
-	<property name="cityPageService" ref="cityPageService"></property>
-</bean>
 
 </beans>
 

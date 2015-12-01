@@ -47,7 +47,6 @@ public class Pagination {
 		if(pageNo > totalPage)
 			pageNo = (totalPage == 0) ? 1 : totalPage;
 		
-		
 		/*
 		 * firstItem 
 		 */
