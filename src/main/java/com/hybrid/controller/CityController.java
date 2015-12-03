@@ -17,13 +17,14 @@ import com.hybrid.model.CityList;
 import com.hybrid.model.CityPage;
 import com.hybrid.service.CityListService;
 import com.hybrid.service.CityPageService;
+import com.hybrid.service.CityRegisterService;
 
 @Controller
 @RequestMapping("/city")       // city라고 요청이 들어오면 컨트롤러가 요청을 담당
 public class CityController {
    static Log  log = LogFactory.getLog(CityController.class);
    
-   @Autowired
+   @Autowired		//필드 주입
    CityListService cityListService;
    
    
@@ -34,6 +35,9 @@ public class CityController {
    //이것을 표현한 것이다
    @Autowired
    CityPageService cityPageService;
+   
+   @Autowired
+   CityRegisterService cityRegisterService;
    
    /*
     * main.html
@@ -151,12 +155,22 @@ public class CityController {
     *	URL_POST_ITEM_APPEND = [/city] or [/city/] 
     *	Accept = application/json
     */
-   @RequestMapping(value={"","/"}, method=RequestMethod.POST)		//POST로 요청을 하면 입력으로 응답
+   @RequestMapping(value={"","/"}, method=RequestMethod.POST)				//POST로 요청을 하면 입력으로 응답
    @ResponseBody
-   public CityCommand postCityAppend(@RequestBody CityCommand city){
-	      log.info("postCityAppend()... city.id = " + city.getId());
+   public CityCommand postCityAppend(@RequestBody CityCommand command){		//CityCommand는  웹페이지form에 있는 데이터
+	      log.info("postCityAppend()... city.id = " + command.getId());
+	      
+	      command.validate();
+	      
+	      if(!command.isValid())		//에러발생시 ajax에서 errorcallback 호출
+	      {
+	    	  //throw
+	      }
+	      
+	      int id = cityRegisterService.regist(command.getCity());
+	      command.setId(id);
 	   
-	   return city;
+	      return command;
    }
    
    /*

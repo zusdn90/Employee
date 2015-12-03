@@ -34,7 +34,9 @@ public class CityDao {	//Mapper와 연결 의존관계
 	
 	public int insert(City city)
 	{
-		return cityMapper.insert(city);
+		int rtn = cityMapper.insert(city);
+		
+		return city.getId();
 	}
 	public int deleteAll()
 	{

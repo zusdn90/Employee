@@ -63,7 +63,7 @@
 	</bean>
 	
 	<aop:aspectj-autoproxy />	
-	<bean class="com.hybrid.aspect.LogDaoAspect"/>
+	<bean class="com.hybrid.aspect.LogAspect"/>
 <!-- 	<bean class="com.hybrid.aspect.TransactionAspect"> -->
 <!-- 		<property name="dataSource" ref="oracleDataSource"/> -->
 <!-- 	</bean> -->

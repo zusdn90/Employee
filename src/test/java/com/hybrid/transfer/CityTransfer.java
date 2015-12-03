@@ -46,6 +46,10 @@ public class CityTransfer {
 					public void accept(City t) {
 						System.out.println(".");
 						System.out.flush();
+						if(t.getDistrict().equals(""))
+						{
+							t.setDistrict(" ");
+						}
 						int rtn = oracleCityMapper.insert(t);
 						log.info("rtn = " + rtn);
 					}

@@ -74,3 +74,18 @@ select id,
   select * from city
   delete from city
   alter table city modify countrycode char(100)
+  
+  insert into city
+  (
+  	name,
+  	countryCode,
+  	district,
+  	population
+  ) values
+  (
+  
+  
+  )
+  
+  
+  
