@@ -5,7 +5,8 @@
 <!--   <mapping decorator="/default-decorator.html"/> -->
 
   <!-- Map decorators to path patterns. -->
-<!--   <mapping path="/admin/*" decorator="/another-decorator.html"/> -->
+  <mapping path="/city/main.html" decorator="/WEB-INF/decorators/menu.jsp"/>
+  <mapping path="/country/main.html" decorator="/WEB-INF/decorators/menu.jsp"/>
 <!--   <mapping path="/*.special.jsp" decorator="/special-decorator.html"/> -->
 
   <!-- Alternative convention. This is more verbose but allows multiple decorators
