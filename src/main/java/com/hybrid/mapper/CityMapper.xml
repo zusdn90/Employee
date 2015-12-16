@@ -60,7 +60,6 @@
         
         insert into city
 		(
-			id,
 			name, 
 			countrycode, 
 			district, 
@@ -68,11 +67,10 @@
 		)
 		values
 		(
-			#{id},
-			#{name, jdbcType=VARCHAR},
-			#{countryCode, jdbcType=VARCHAR},
-			#{district, jdbcType=VARCHAR},
-			#{population, jdbcType=NUMERIC}
+			#{name, 		jdbcType=VARCHAR},
+			#{countryCode,  jdbcType=VARCHAR},
+			#{district, 	jdbcType=VARCHAR},
+			#{population, 	jdbcType=NUMERIC}
 		)
     </insert>
     

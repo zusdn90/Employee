@@ -8,6 +8,7 @@ import com.hybrid.model.City;
 
 @JsonIgnoreProperties(value = "city")
 public class CityCommand {
+	
 	private int id;
 	private String name;
 	private String countryCode;

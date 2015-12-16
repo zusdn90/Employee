@@ -1,5 +1,7 @@
 package com.hybrid.service;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,6 +11,8 @@ import com.hybrid.model.City;
 
 public class CityRegisterService {
 
+	static Log log = LogFactory.getLog(CityRegisterService.class);
+	
 	CityDao cityDao;
 
 	public void setCityDao(CityDao dao) {
@@ -24,6 +28,7 @@ public class CityRegisterService {
 		try{
 		 id = cityDao.insert(city);
 		}catch(DataIntegrityViolationException e){
+			log.error(e);
 			throw new CityRegisterException();
 		}
 		

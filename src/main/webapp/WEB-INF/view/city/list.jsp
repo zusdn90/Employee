@@ -36,13 +36,13 @@
 		<tbody>
 			<tr data-ng-repeat="city in citys">
 				<td>{{$index + 1}}</td>
-				<td><a href="#/detail">{{city.id}}</a></td>
+				<td><a href="#/detail/{{city.id}}">{{city.id}}</a></td>
 				<td>{{city.name}}</td>
 				<td>{{city.countryCode}}</td>
 				<td>{{city.district}}</td>
 				<td>{{city.population}}</td>
-				<td><a href="#/modify" class="btn btn-success">Edit...</a></td>
-				<td><a href="#/delete" class="btn btn-info">Delete...</a></td>
+				<td><a href="#/modify/{{city.id}}" class="btn btn-success">Edit...</a></td>
+				<td><a href="#/delete/{{city.id}}" class="btn btn-info">Delete...</a></td>
 			</tr>
 		</tbody>
 	</table>

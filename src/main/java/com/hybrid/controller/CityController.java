@@ -42,7 +42,7 @@ public class CityController {
    /*
     * main.html
     */
-   @RequestMapping(value="/main.html" , method=RequestMethod.GET)   // main.html 요청이 들어오면 getMainView가 실행가 실행되면서 /WEB-INF/view/city/main.jsp 이것이 실행된다.
+   @RequestMapping(value="/main.html" , method=RequestMethod.GET)   // main.html 요청이 들어오면 getMainView가 실행되면서 /WEB-INF/view/city/main.jsp 이것이 실행된다.
    public String getMainView()
    {
       log.info("getMainView()...");
@@ -129,6 +129,7 @@ public class CityController {
       City city = new City();
       city.setId(id);
       city.setName("seoul");
+      
       return city;
    }
    

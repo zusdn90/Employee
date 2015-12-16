@@ -4,7 +4,7 @@
 app.config(function($routeProvider) {
 		console.log("/delete config...")
 		
-		$routeProvider.when("/delete", {				//delete로 요청을 하면
+		$routeProvider.when("/delete:id", {				//delete로 요청을 하면
 			templateUrl: "delete.html",				//delete.html을 불러와서 ng-view를 호출 
 			controller: "deleteController"			//deleteController를 실행
 		});
@@ -12,9 +12,9 @@ app.config(function($routeProvider) {
 	});
 
 
-	app.controller('deleteController', function($scope, $http, URL) {
+	app.controller('deleteController', function($scope, $http, URL, $routeParams) {
 		console.log("deleteController...");
 		console.log("URL.DELETE_ITEM_DELETE_BASE =" + URL.DELETE_ITEM_DELETE_BASE);
-		
+		console.log("id = " + $routeParams.id);
 		$scope.$parent.title = "Delete City View";		
 	});
