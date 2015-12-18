@@ -20,4 +20,19 @@
 	<property name="cityDao" ref="cityDao"></property>
 </bean>
 
+<!-- CityDetailService -->
+<bean id="cityDetailService" class="com.hybrid.service.CityDetailService">
+    <property name="cityDao" ref="cityDao"/>
+</bean>
+
+<!-- CityModifyService -->
+<bean id="cityModifyService" class="com.hybrid.service.CityModifyService">
+    <property name="cityDao" ref="cityDao"/>
+</bean>
+
+<!-- CityUnRegisterService -->
+<bean id="cityUnRegisterService" class="com.hybrid.service.CityUnRegisterService">
+    <property name="cityDao" ref="cityDao"/>
+</bean>
+
 </beans>

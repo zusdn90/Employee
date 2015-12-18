@@ -12,7 +12,16 @@
 <body class="container">
 
 <a class="btn btn-primary" href="#/list">list...</a>
-
+<form name="cityForm" novalidate="novalidate" data-ng-submit="submit()">
+				<!-- Submit -->
+				<div class="form-group">
+				<input type="submit" 
+					   value="확인"
+					   class="btn btn-primary"
+					   data-ng-disabled="cityForm.$invalid"/>
+					   <div>cityForm.$invalid = {{cityForm.$invalid}}</div>	
+				</div>
+			</form>
 </body>
 </html>
 

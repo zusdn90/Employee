@@ -1,6 +1,8 @@
 package com.hybrid.controller;
 
 
+import java.rmi.activation.ActivationGroupDesc.CommandEnvironment;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +17,12 @@ import com.hybrid.command.CityCommand;
 import com.hybrid.model.City;
 import com.hybrid.model.CityList;
 import com.hybrid.model.CityPage;
+import com.hybrid.service.CityDetailService;
 import com.hybrid.service.CityListService;
+import com.hybrid.service.CityModifyService;
 import com.hybrid.service.CityPageService;
 import com.hybrid.service.CityRegisterService;
+import com.hybrid.service.CityUnRegisterService;
 
 @Controller
 @RequestMapping("/city")       // city라고 요청이 들어오면 컨트롤러가 요청을 담당
@@ -33,11 +38,21 @@ public class CityController {
    //   this.cityPageService = city
    //}
    //이것을 표현한 것이다
+  
    @Autowired
    CityPageService cityPageService;
    
    @Autowired
    CityRegisterService cityRegisterService;
+   	
+   @Autowired
+   CityDetailService cityDetailService;
+	
+   @Autowired
+   CityModifyService cityModifyService;	
+	
+   @Autowired
+   CityUnRegisterService cityUnRegisterService;
    
    /*
     * main.html
@@ -84,7 +99,7 @@ public class CityController {
                         // (/WEB-INF/view/city/append.jsp) response
    }
    /*
-    * append.html
+    * modify.html
     */
    @RequestMapping(value="/modify.html",method=RequestMethod.GET)   // modify.html 요청이 들어오면 getModifyView가 실행가 실행되면서 /WEB-INF/view/city/city.jsp 이것이 실행된다.
    public String getModifyView()
@@ -94,6 +109,9 @@ public class CityController {
       return "city/modify";      // 논리적인view로 취급하여 return   
                         // (/WEB-INF/view/city/modify.jsp) response
    }
+   /*
+    * delete.html
+    */
    @RequestMapping(value="/delete.html",method=RequestMethod.GET)   // delete.html 요청이 들어오면 getDeleteView가 실행가 실행되면서 /WEB-INF/view/city/delete.jsp 이것이 실행된다.
    public String getDeleteView()
    {
@@ -102,6 +120,10 @@ public class CityController {
       return "city/delete";      // 논리적인view로 취급하여 return   
                         // (/WEB-INF/view/city/delete.jsp) response
    }
+   
+   
+   
+   
    /*
     *  GET_LIST = /city or /city/
     *  Accept = application/json
@@ -126,15 +148,11 @@ public class CityController {
    @ResponseBody
    public City getCityItem(@PathVariable int id){
       log.info("getCityItem().... id = "+id);
-      City city = new City();
-      city.setId(id);
-      city.setName("seoul");
       
-      return city;
+      City city = cityDetailService.detail(id);
+      
+      return city;		//spring이 자동으로 json 형태로 리턴
    }
-   
-   
-   
    
 //   @RequestMapping("/page/{pageNo:[\\-\\+]{0,1}[0-9]+}")
 //   {0,1} 0번 또는 1번 실행
@@ -180,11 +198,13 @@ public class CityController {
     */
    @RequestMapping(value={"/{id:[0-9]+}"}, method=RequestMethod.PUT)		
    @ResponseBody
-   public CityCommand putCityModify(@PathVariable int id, @RequestBody CityCommand city){
+   public CityCommand putCityModify(@PathVariable int id, @RequestBody CityCommand command){
 	   log.info("putCityModify()... id = " + id);
-	   log.info("putCityModify()... city.id = " + city.getId());
+	   log.info("putCityModify()... city.id = " + command.getId());
 	   
-	   return city;
+	   cityModifyService.modify(command.getCity());
+	   
+	   return command;
    }
    
    /*
@@ -193,12 +213,10 @@ public class CityController {
     */
    @RequestMapping(value={"/{id:[0-9]+}"}, method=RequestMethod.DELETE)		
    @ResponseBody
-   public CityCommand deleteCity(@PathVariable int id){
+   public void  deleteCity(@PathVariable int id){
 	   log.info("deleteCity()... id = " + id);
-	   CityCommand city = new CityCommand();
-	   city.setId(id);
 	   
-	   return city;
+	   cityUnRegisterService.unregist(id);
    }
    
    

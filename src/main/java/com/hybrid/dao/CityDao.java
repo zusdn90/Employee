@@ -32,14 +32,27 @@ public class CityDao {	//Mapper와 연결 의존관계
 		return cityMapper.selectByCountryCode(countryCode);
 	}
 	
+	public City selectById(int id) {
+		return cityMapper.selectById(id);
+	}
+	
 	public int insert(City city)
 	{
 		int rtn = cityMapper.insert(city);
 		
 		return city.getId();
 	}
-	public int deleteAll()
-	{
+
+	
+	public int update(City city) {
+		return cityMapper.update(city);
+	}
+	
+	public int deleteById(int id) {
+		return cityMapper.deleteById(id);
+	}
+	
+	public int deleteAll() {
 		return cityMapper.deleteAll();
 	}
 }

@@ -22,6 +22,16 @@
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr><td><a href="#/append" class="btn btn-primary">Append</a></td></tr>
+			<tr><th colspan="8">
+				<div data-uib-pagination 
+					 data-total-items="paging.totalItem" style="width:800px;" 
+					 data-ng-model="pageNo"
+					 data-max-size="10"
+					 data-ng-change="selectPage()"
+					 data-boundary-links="true">
+				</div>
+				</th>
+			</tr>
 			<tr>
 				<th>No</th>
 				<th>ID</th>
@@ -55,7 +65,6 @@
 	{{paging}}
 </textarea>
 </div>
-
 </body>
 </html>
 

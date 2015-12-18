@@ -17,7 +17,6 @@
 			<div class="panel-heading">도시 입력</div>
 			<pre>{{city}}</pre>				<!-- model에 있는 데이터를 view에 바인딩 >>단반향 -->
 			<div class="panel-body">
-			<form name="cityForm" novalidate="novalidate" data-ng-submit="submit()">
 				<!-- Name -->
 				<div class="form-group">
 				<label for="name">Name : </label>
