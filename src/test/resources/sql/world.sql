@@ -3,18 +3,18 @@ drop table member;
 --	Member table
 --	DDL(Data Definition Language)
 create table member (
-	id int auto_increment,
-	email varchar(255),
-	name varchar(255),
-	password varchar(255),
-	register_date date,
-	constraint pk_id primary key (id)	
+	id 					int auto_increment,
+	email 				varchar(255) not null,
+	name 				varchar(255) not null,
+	password 			varchar(255) not null,
+	register_date 		date,
+	constraint pk_id 	primary key (id)	
 );
 --
 --	Member CRUD (Create, Read, Update, Delete)
 -- 	DML(Data Manipulation Language)
 --	Create
-insert into member (email,name,password,register_date) values ('xxx@yyy','홍길동','1234','2015/11/11')
+insert into member (email,name,password,register_date) values ('xxx@hybrid.com','홍길동','1234','2015/12/21')
 
 --	Read
 select * from member;

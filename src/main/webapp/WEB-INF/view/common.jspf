@@ -13,7 +13,7 @@
 
 <link rel="stylesheet" href="${bootstrap}"/>
 <link rel="stylesheet" href="${angular_loading_bar_css}"/>
-<link rel="stylesheet" href="${font-awesome_css}"/>
+<link rel="stylesheet" href="${font_awesome_css}"/>
 <link rel="stylesheet" href="${metismenu_css}"/>
 
 <!-- JavaScripte  웹브라우저의 경로를 만들기 위해서 -->

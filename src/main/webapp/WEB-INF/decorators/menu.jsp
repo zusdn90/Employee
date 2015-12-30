@@ -30,8 +30,8 @@
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="/World/jsp/city/main.jsp">City</a></li>
-        <li><a href="/World/jsp/country/main.jsp">Country</a></li>
+        <li><a href="/Employee/city/main.html">City</a></li>
+        <li><a href="/Employee/country/main.html">Country</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">

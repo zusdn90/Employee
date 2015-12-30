@@ -1,7 +1,6 @@
 package com.hybrid.controller;
 
 
-import java.rmi.activation.ActivationGroupDesc.CommandEnvironment;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -122,8 +121,6 @@ public class CityController {
    }
    
    
-   
-   
    /*
     *  GET_LIST = /city or /city/
     *  Accept = application/json
@@ -134,9 +131,6 @@ public class CityController {
    {
       log.info("getCityAll()....");
       CityList list = cityListService.getList();
-      
-   
-      
       
       return list;         //ResponseBody는 return을 data로 취급 
    }

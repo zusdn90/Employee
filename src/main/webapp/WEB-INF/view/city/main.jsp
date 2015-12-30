@@ -69,7 +69,13 @@
 		$scope.setMenuStyle = function(str) {
 			$scope.staticOrFixed = str;
 		};
+		
+		var ajax = $http.get("/Employee/user/logincheck");
+		ajax.then(function(value) {
+			$scope.loginstatus = value.data;
+		});
 	});
+	
 </script>
 <c:url var="listController" value="/js/city/listController.js"/>
 <c:url var="detailController" value="/js/city/detailController.js"/>
@@ -85,6 +91,7 @@
 
 </head>
 <body data-ng-controller="mainController" class="container">
+<pre>{{loginstatus}}</pre>
 <h1>{{title}}</h1>
 <div data-ng-view>
 

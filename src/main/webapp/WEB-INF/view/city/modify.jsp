@@ -7,7 +7,6 @@
 <html lang="ko">
 <head>
 <title>modify.jsp</title>
-
 </head>
 <body class="container">
 <a class="btn btn-primary" href="#/list">list...</a>
@@ -111,7 +110,6 @@
 						   <div class="alert alert-warning" data-ng-show="cityForm.population.$error.max">최대값을 초과하였습니다.</div>
 						   <div class="alert alert-warning" data-ng-show="cityForm.population.$error.min">0이상 입력 가능합니다.</div>
 					   </div>	   
-						   
 					</div>
 					
 				<!-- Submit -->

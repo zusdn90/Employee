@@ -8,22 +8,28 @@ drop table member;
 --	DDL(Data Definition Language)
 create table member (
 	id 	int, 
-	email varchar(255),
-	name varchar(255),
-	password varchar(255),
-	register_date date,
-	constraint pk_id primary key (id)	
+	email varchar(255) not null,
+	name varchar(255) not null,
+	password varchar(255) not null,
+	register_date date not null,
+	constraint pk_member_id primary key (id)	
 );
 --
 --	Member CRUD (Create, Read, Update, Delete)
 -- 	DML(Data Manipulation Language)
 --	Create
 
-create sequence member_id_seq
+drop sequence member_id_generator
+create sequence member_id_generator
+
+--system table
+select * from user_tables
+
+select * from user_sequences
 
 insert into member 
 (id,email,name,password,register_date) 
-values (member_id_seq.nextval,'xxx@yyy','홍길동','1234','2015/11/11')
+values (member_id_generator.nextval,'xxx@hybrid.com','홍길동','1234','2015/12/21')
 
 --	Read
 select * from member;

@@ -23,6 +23,7 @@ public class CityDao {	//Mapper와 연결 의존관계
 	{
 		return cityMapper.selectAll();
 	}
+	
 	public List<City> selectPage(Pagination paging)
 	{
 		return cityMapper.selectPage(paging);
